@@ -1,0 +1,40 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+hr {
+  border: 0;
+  outline: none;
+  height: 2px;
+  background: transparent url(../images/hr.gif) center center repeat-x;
+  margin: 0 0 20px;
+}
+
+section {
+  max-width:100%;
+}
+
+.wrapper {
+  max-width:60%;
+}
+
+.justified_line {
+  text-align:left;
+}
+
+.justified_line span {
+  float:right;
+}
+
+ul {
+    margin: 0 0 20px 0;
+    padding: 0 0 0 20px;
+    overflow: hidden;
+}
+
+li {
+    margin: 0 0 0 50px;
+    padding: 0 0 0 0px;
+    float: left;
+}
