@@ -16,7 +16,7 @@ h3 { font-size: 18px; line-height: 24px; }
 p, ul, ol { margin: 0 0 20px; }
 a { color: #4276b6; text-decoration: none; }
 a:hover, a:focus { text-decoration: underline; }
-.wrapper { width: 650px; max-width: 75%; margin: 0 auto; position: relative; }
+.wrapper { width: 850px; max-width: 90%; margin: 0 auto; position: relative; }
 section {
   width: 100%; padding: 30px 30px 50px; margin: 20px 0;
   background: #fbfbfb; border: 1px solid #cbcbcb; border-radius: 3px;
