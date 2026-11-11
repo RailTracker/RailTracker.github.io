@@ -87,3 +87,7 @@ footer { width: 180px; position: fixed; left: 50%; margin-left: -530px; bottom: 
   margin: 0 0 12px;
 }
 .experience ul + .company-name { margin-top: 36px; }
+
+.education { font-size: 13px; }
+.education h3 { font-size: 16px; }
+.education h3 span { font-size: 13px; font-weight: normal; }
