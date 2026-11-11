@@ -1,80 +1,47 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function () {
+  const board = document.querySelector('.board');
+  const status = document.querySelector('h2');
+  const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  let cells, turn, finished;
 
-  var board = $(".board");
-  var h2 = $("h2");
-  var html = "";
-  var moveCnt = 0;
-
-  var win = false;
-
-  var currentTurn = "X";
-
-  var boardArray = ["", "", "", "", "", "", "", "", ""];
-
-  var winConditions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-
-  Initialize();
-
-  // 'New Game' button reinitializes the game
-  $("#new").click(function() {
-    Initialize();
-  });
-
-  // Player chose a div
-  board.click(function(event) {
-    if (win === false && moveCnt < 9) {
-      move(event.target.id);
+  function initialize() {
+    cells = Array(9).fill('');
+    turn = 'X';
+    finished = false;
+    board.replaceChildren();
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement('div');
+      cell.id = String(i);
+      cell.className = 'box';
+      board.appendChild(cell);
     }
-  });
-
-  // Initialize TicTacToe game
-  function Initialize() {
-    currentTurn = "X";
-    win = false;
-    moveCnt = 0;
-    boardArray = ["", "", "", "", "", "", "", "", ""];
-    board.empty();
-    for (var i = 0; i < 9; i++) {
-      html = "<div id='"+ i.toString() +"' class='box'></div>";
-      board.append(html);
-    }
-    h2.html("It is " + currentTurn + "'s turn.").hide().fadeIn("fast");
+    status.textContent = "It is X's turn.";
   }
 
-  // Update the HTML and boardArray with move and switch players
-  function move(id) {
-    var intId = parseInt(id);
-
-    if (boardArray[intId] === "") {
-      moveCnt++;
-      $("#" + id).html("<p>"+currentTurn+"</p>").hide().fadeIn("fast");
-      boardArray[intId] = currentTurn;
-      console.log(boardArray);
-      checkMove();
+  board.addEventListener('click', function (event) {
+    const cell = event.target.closest('.box');
+    if (!cell || cell.parentElement !== board || finished) return;
+    const index = Number(cell.id);
+    if (cells[index]) {
+      alert('Spot has already been taken. Choose another.');
+      return;
+    }
+    cells[index] = turn;
+    const mark = document.createElement('p');
+    mark.textContent = turn;
+    cell.appendChild(mark);
+    if (wins.some(line => line.every(i => cells[i] === turn))) {
+      status.textContent = turn + ' has won!';
+      finished = true;
+    } else if (cells.every(Boolean)) {
+      status.textContent = "The game is over. It's a draw.";
+      finished = true;
     } else {
-      alert ("Spot has already been taken. Choose another.");
+      turn = turn === 'X' ? 'O' : 'X';
+      status.textContent = "It is " + turn + "'s turn.";
     }
-  }
+  });
 
-  // Check the board to see if the move just made won or draw
-  function checkMove() {
-    for (var i = 0; i < winConditions.length; i++) {
-      if (boardArray[winConditions[i][0]] === currentTurn && boardArray[winConditions[i][0]] === boardArray[winConditions[i][1]] && boardArray[winConditions[i][1]] === boardArray[winConditions[i][2]]) {
-        win = true;
-        h2.html(currentTurn + " has won!").hide().fadeIn("fast");
-      }
-    }
-
-    if (moveCnt > 8 && win === false) {
-      h2.html("The game is over. It's a draw.").hide().fadeIn("fast");
-    } else if (moveCnt <= 8 && win === false) {
-      if (currentTurn === "X") {
-        currentTurn = "O";
-      } else {
-        currentTurn = "X";
-      }
-      h2.html("It is " + currentTurn + "'s turn.").hide().fadeIn("fast");
-    }
-  }
-
+  document.querySelector('#new').addEventListener('click', initialize);
+  initialize();
 });
