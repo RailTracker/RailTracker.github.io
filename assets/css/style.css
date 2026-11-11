@@ -80,3 +80,10 @@ footer { width: 180px; position: fixed; left: 50%; margin-left: -530px; bottom: 
   .experience .justified_line { display: block; }
   .experience .justified_line span { display: block; margin-top: 2px; }
 }
+
+.experience > .company-location {
+  color: #626262;
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+.experience ul + .company-name { margin-top: 36px; }
