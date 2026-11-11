@@ -39,3 +39,44 @@ footer { width: 180px; position: fixed; left: 50%; margin-left: -530px; bottom: 
   .skill_list li { margin-left: 20px; }
 }
 @media print { body { padding: .4in; color: #444; font-size: 12pt; } }
+
+/* Keep experience titles, dates, and accomplishments easy to scan. */
+.experience .company-name {
+  color: #333;
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+.experience > p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.experience .justified_line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 16px;
+  row-gap: 2px;
+  color: #333;
+  font-size: 16px;
+  margin: 24px 0 8px;
+}
+.experience .justified_line span {
+  float: none;
+  color: #626262;
+  font-size: 13px;
+  font-weight: normal;
+  white-space: nowrap;
+}
+.experience ul {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+.experience li { line-height: 1.6; margin-bottom: 8px; }
+.experience li:last-child { margin-bottom: 0; }
+.experience h4 { margin-bottom: 10px; }
+@media screen and (max-width: 480px) {
+  .experience .justified_line { display: block; }
+  .experience .justified_line span { display: block; margin-top: 2px; }
+}
