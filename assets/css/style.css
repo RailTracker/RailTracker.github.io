@@ -28,7 +28,7 @@ hr { border: 0; height: 2px; background: #d5d2c6; margin: 0 0 20px; }
 .justified_line span { float: right; }
 .skill_list { margin: 0 0 15px; padding: 0 0 0 20px; overflow: hidden; }
 .skill_list li { margin: 0 0 0 50px; padding: 0; float: left; }
-footer { width: 180px; position: fixed; left: 50%; margin-left: -530px; bottom: 20px; text-align: right; line-height: 16px; }
+footer { margin: 20px auto; text-align: center; line-height: 16px; }
 @media screen and (max-width: 1060px), screen and (max-height: 680px) {
   footer { text-align: center; margin: 20px auto; position: relative; left: auto; bottom: auto; width: auto; }
 }
